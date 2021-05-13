@@ -4,6 +4,7 @@ import net.unit8.drill.solid.DeleteUserCommand;
 import net.unit8.drill.solid.DeleteUserPort;
 import net.unit8.drill.solid.LoadUserPort;
 import net.unit8.drill.solid.domain.User;
+import net.unit8.drill.solid.domain.UserName;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,7 @@ public class DeleteUserCommandHandler {
         User user = loadUserPort.load(command.targetUserId());
         deleteUserPort.delete(user);
         publisher.publishEvent(new UserDeletedEvent(
-                user.userId().value(),
+                user.name(),
                 user.email().toString()
         ));
     }

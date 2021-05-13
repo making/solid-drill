@@ -1,4 +1,13 @@
 package net.unit8.drill.solid.domain;
 
-public record UserId(String value) {
+import lombok.Value;
+
+@Value
+public class UserId {
+    String value;
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

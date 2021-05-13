@@ -1,5 +1,7 @@
 package net.unit8.drill.solid.choreography;
 
-public record UserDeletedEvent(String name,
+import net.unit8.drill.solid.domain.UserName;
+
+public record UserDeletedEvent(UserName name,
                                String email) {
 }
