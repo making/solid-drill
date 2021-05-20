@@ -13,9 +13,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>15</source>
-                    <target>15</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -70,7 +69,7 @@
         <dependency>
             <groupId>am.ik.yavi</groupId>
             <artifactId>yavi</artifactId>
-            <version>0.5.0</version>
+            <version>0.6.0</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>

@@ -2,6 +2,7 @@ package net.unit8.drill.solid.domain;
 
 import am.ik.yavi.builder.ValidatorBuilder;
 import am.ik.yavi.core.ConstraintViolations;
+import am.ik.yavi.core.Validated;
 import am.ik.yavi.core.Validator;
 import am.ik.yavi.fn.Either;
 import lombok.Value;
@@ -22,9 +23,9 @@ public class UserName implements Serializable {
         this.value = value;
     }
 
-    public static Either<ConstraintViolations, UserName> of(String value) {
+    public static Validated<UserName> of(String value) {
         UserName userName = new UserName(value);
-        return validator.validateToEither(userName);
+        return validator.prefixed("username").applicative().validate(userName);
     }
 
     @Override

@@ -3,6 +3,7 @@ package net.unit8.drill.solid.domain;
 import am.ik.yavi.builder.ValidatorBuilder;
 import am.ik.yavi.constraint.CharSequenceConstraint;
 import am.ik.yavi.core.ConstraintViolations;
+import am.ik.yavi.core.Validated;
 import am.ik.yavi.core.Validator;
 import am.ik.yavi.fn.Either;
 import lombok.Value;
@@ -27,9 +28,9 @@ public class EmailAddress {
         this.domain = domain;
     }
 
-    public static Either<ConstraintViolations, EmailAddress> of(String localPart, String domain) {
+    public static Validated<EmailAddress> of(String localPart, String domain) {
         EmailAddress email = new EmailAddress(localPart, domain);
-        return validator.validateToEither(email);
+        return validator.prefixed("email").applicative().validate(email);
     }
 
     public String toAddrSpecForm() {
